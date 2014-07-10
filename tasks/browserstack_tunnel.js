@@ -13,6 +13,7 @@ module.exports = function(grunt) {
     var browserStackTunnel = new BrowserStackTunnel({
       key: options.accessKey,
       v: options.verbose,
+      force: options.force,
       hosts: [{
         name: options.hostname,
         port: options.port,
