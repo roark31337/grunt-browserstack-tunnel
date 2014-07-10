@@ -5,12 +5,14 @@ module.exports = function(grunt) {
       accessKey: '',
       hostname: 'localhost',
       port: 3000,
-      sslFlag: 0
+      sslFlag: 0,
+      verbose: false
     });
 
     var BrowserStackTunnel = require('browserstacktunnel-wrapper');
     var browserStackTunnel = new BrowserStackTunnel({
       key: options.accessKey,
+      v: options.verbose,
       hosts: [{
         name: options.hostname,
         port: options.port,
@@ -22,7 +24,7 @@ module.exports = function(grunt) {
     browserStackTunnel.start(function (error) {
       if (error) {
         grunt.log.error('Could not start tunnel');
-        grunt.log.debug(error);
+        grunt.log.error(error);
         done(false);
       } else {
         grunt.log.ok('Start tunnel successfully');
